@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manager Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+form {
+	margin-bottom: 20px;
+}
+
+label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+
+input[type="text"],
+select {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+input[type="submit"] {
+	padding: 5px 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+table {
+	margin-top: 20px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+
+button {
+	padding: 5px 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+	<h1>Manager Dashboard</h1>
+
+	<h2>Check Rates</h2>
+	<form>
+		
+		<div class="form-group">
+			<label for="location">Location:</label>
+			
+			<select class="form-control" id="location">
+				{% for each in object_list %}
+				<option>{{ each.location }}</option>
+				{% endfor %}
+			</select>	<br>
+			<a href="#" class="btn btn-primary">Check Rates</a>	
+		</div>
+		
+		
+	</form>
+
+	<h2>View Requests</h2>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>User</th>
+				<th>Date</th>
+				<th>Time Slot</th>
+				<th>Location</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ each.title }}r A</td>
+				<td>{{ each.date }}</td>
+				<td>2-4pm</td>
+				<td>Location X</td>
+				<td>
+					<a href="#" class="btn btn-success">Confirm</a>
+					<a href="#" class="btn btn-danger">Reject</a>
+
+				</td>
+			</tr>
+			<tr>
+				<td>User B</td>
+				<td>April 1</td>
+				<td>3-5pm</td>
+				<td>Location Y</td>
+				<td>
+					<button type="button" class="btn btn-success">Confirm</button>
+					<button type="button" class="btn btn-danger">Reject</button>
+				</td>
+			</tr>
+			<tr>
+				<td>User C</td>
+				<td>April 2</td>
+				<td>10am-12pm</td>
+				<td>Location Z</td>
+				<td>
+					<button type="button" class="btn btn-success">Confirm</button>
+					<button type="button" class="btn btn-danger">Reject</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2>Bill Generation</h2>
+	<form>
+		<div class="form-group">
+			<label for="location">Location:</label>
+			<select class="form-control" id="location">
+				<option>Location X</option>
+				<option>Location Y</option>
+				<option>Location Z</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="date">Date:</label>
+			<input type="date" class="form-control" id="date">
+		</div>
+		<button type="submit" class="btn btn-primary">Generate Bill</button>
+	</form>
+
+	<h2>Booking History</h2>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>User</th>
+				<th>Date</th>
+				<th>Time Slot</th>
+				<th>Location</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>User A</td>
+                <td>March 30</td>
+                <td>2-4pm</td>
+                <td>Location X</td>
+                <td>$50</td>
+            </tr>
+            <tr>
+                <td>User B</td>
+                <td>April 1</td>
+                <td>3-5pm</td>
+                <td>Location Y</td>
+                <td>$70</td>
+            </tr>
+            <tr>
+                <td>User C</td>
+                <td>April 2</td>
+                <td>10am-12pm</td>
+                <td>Location Z</td>
+                <td>$40</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+    
+{% endblock content %}
